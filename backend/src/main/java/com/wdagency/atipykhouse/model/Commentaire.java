@@ -6,19 +6,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
 @Data
 @Entity
-public abstract class User {
-	
+public class Commentaire {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
-	private String nom;
-	private String prenom;
-	private Date dateNaissance;
-	private int age;
-	private String profil;
+	private Date creationDate;
+	private Date modifDate;
+	@ManyToOne
+	private User author;
+	@ManyToOne
+	private Hebergement hebergement;
+	private String content;
+	
 }

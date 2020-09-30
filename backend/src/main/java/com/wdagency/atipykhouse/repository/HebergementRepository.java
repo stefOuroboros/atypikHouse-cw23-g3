@@ -8,4 +8,6 @@ import com.wdagency.atipykhouse.model.Hebergement;
 @Repository
 public interface HebergementRepository extends JpaRepository<Hebergement, Long>{
 
+	
+	public Hebergement findById(String id);
 }

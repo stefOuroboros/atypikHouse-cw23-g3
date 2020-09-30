@@ -32,7 +32,7 @@ public class StartUpListener {
 	    	hb.setType("testType");
 	    	hb.setPhotos("testUrlPhoto");
 	    	hb.setCouchages(5);
-	    	hb.setCommentId(5);
+//	    	hb.setCommentId(5);
 	    	heberRepo.save(hb);
 	    }
 
