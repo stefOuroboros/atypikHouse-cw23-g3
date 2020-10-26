@@ -32,7 +32,7 @@ public class HerbergementService {
 	}
 	
 	public Hebergement pacthOne(Hebergement hbToPatch) {
-		Hebergement hbData = hbRepo.findById(hbToPatch.getId());
+		Hebergement hbData = hbRepo.findById(hbToPatch.getId().toString());
 		hbData.setType(hbToPatch.getType());
 		hbData.setPrix(hbToPatch.getPrix());
 		hbData.setPhotos(hbData.getPhotos());

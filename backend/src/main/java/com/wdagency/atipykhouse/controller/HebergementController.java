@@ -19,16 +19,16 @@ import com.wdagency.atipykhouse.service.HerbergementService;
 public class HebergementController {
 
 	@Autowired
-	HerbergementService hebRepo;
+	HerbergementService hebService;
 	
 	@GetMapping(value="/homes")
 	public List<Hebergement> getHebergements() {
-		return hebRepo.findAll();
+		return hebService.findAll();
 	}
 	
 	@GetMapping(value="/home/{id}")
 	public Hebergement getHebergement(String id) {
-		return hebRepo.findOne(id);
+		return hebService.findOne(id);
 	}
 	
 //	@DeleteMapping
