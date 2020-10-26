@@ -24,6 +24,10 @@ public class UserService {
 		return userRepo.findByEmail(email);
 	}
 	
+	public User findById(String id) {
+		return userRepo.findById(id);
+	}
+	
 	public void createuser(User user) {
 		userRepo.saveAndFlush(user);
 	}

@@ -14,20 +14,25 @@ import com.wdagency.atipykhouse.model.User;
 import com.wdagency.atipykhouse.service.UserService;
 
 @CrossOrigin
-@RestController(value = "user")
+@RestController(value = "users")
 public class UserController {
 
 	@Resource
 	UserService userService;
 	
-	@GetMapping(value="all")
+	@GetMapping
 	public List<User> getUsers() {
 		return userService.getUsers();
 	}
 	
-	@GetMapping(value="/{email}")
+	@GetMapping(value="/user/email={email}")
 	public User getUser(@PathVariable String email) {
 		return userService.findUserByEmail(email);
+	}
+	
+	@GetMapping(value="/{id}")
+	public User getUserById(@PathVariable String id) {
+		return userService.findById(id);
 	}
 	
 	@PostMapping(value="add")
