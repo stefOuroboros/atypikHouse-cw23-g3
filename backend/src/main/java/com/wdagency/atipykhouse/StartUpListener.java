@@ -42,6 +42,7 @@ public class StartUpListener {
 	    	Date dateNaiss = toNaiss.getTime();
 	    	user.setDateNaissance(dateNaiss);
 	    	user.setEmail("stephane.gallois89@gmail.com");
+	    	user.setPassword("pwd");
 	    	user.setNom("Gallois");
 	    	user.setPrenom("Stéphane");
 	    	user.setRole(ROLE.ADMIN);
@@ -57,6 +58,7 @@ public class StartUpListener {
 	    	Date dateNaiss2 = toNaiss2.getTime();
 	    	user2.setDateNaissance(dateNaiss2);
 	    	user2.setEmail("owner1@gmail.com");
+	    	user2.setPassword("pwd");
 	    	user2.setNom("Dupont");
 	    	user2.setPrenom("Albert");
 	    	user2.setRole(ROLE.OWNER);

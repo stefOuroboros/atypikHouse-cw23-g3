@@ -1,6 +1,8 @@
 package com.wdagency.atipykhouse.model;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,11 +39,11 @@ public class Hebergement {
 	private String photos;
 	
 	
-	@OneToMany(mappedBy="hebergement")
+	@OneToMany(mappedBy="hebergement", cascade = CascadeType.ALL)
 	private List<Commentaire> comments;
 	
 	@ManyToOne(targetEntity = User.class)
-	@JoinColumn(name = "userID")
+	@JoinColumn(name = "userID", nullable=false)
 	private User user;
 
 }

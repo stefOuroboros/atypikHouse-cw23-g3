@@ -38,6 +38,8 @@ public class User {
 	private ROLE role;
 	@Column(name = "email")
 	private String email;
+	@Column(name="password", nullable = false)
+	private String password;
 	
 //    @Fetch(FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
