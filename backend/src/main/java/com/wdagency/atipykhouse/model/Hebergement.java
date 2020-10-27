@@ -42,8 +42,11 @@ public class Hebergement {
 	@OneToMany(mappedBy="hebergement", cascade = CascadeType.ALL)
 	private List<Commentaire> comments;
 	
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+	private List<User> client;
+	
 	@ManyToOne(targetEntity = User.class)
 	@JoinColumn(name = "userID", nullable=false)
-	private User user;
+	private User owner;
 
 }
