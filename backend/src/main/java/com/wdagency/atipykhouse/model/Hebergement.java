@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,7 +40,8 @@ public class Hebergement {
 	@OneToMany(mappedBy="hebergement")
 	private List<Commentaire> comments;
 	
-	@Column(name = "user_id")
-	private String userId;
+	@ManyToOne(targetEntity = User.class)
+	@JoinColumn(name = "userID")
+	private User user;
 
 }
