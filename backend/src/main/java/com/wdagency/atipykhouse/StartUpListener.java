@@ -22,9 +22,9 @@ public class StartUpListener {
 
 	    @Autowired
 	    private HebergementService heberRepo;
-	    @Autowired UserService userRepo;
-
-
+	    
+	    @Autowired
+	    UserService userRepo;
 
 	    public void StartupListener(@Value("${app.version}") String appVersion) {
 	        this.appVersion = appVersion;
