@@ -54,7 +54,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent},
   { path: 'house', component: SearchComponent},
 
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 export const appRoutingModule = RouterModule.forRoot(routes);
