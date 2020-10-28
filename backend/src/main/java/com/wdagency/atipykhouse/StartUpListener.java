@@ -72,7 +72,7 @@ public class StartUpListener {
 	    	hb.setType("testType");
 	    	hb.setPhotos("testUrlPhoto");
 	    	hb.setCouchages(5);
-	    	hb.setUser(usr);
+	    	hb.setOwner(usr);
 //	    	usr.getHebergements().add(hb);
 //	    	userRepo.saveAndFlush(usr);
 	    	heberRepo.newHb(hb);
