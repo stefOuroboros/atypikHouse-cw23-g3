@@ -1,3 +1,7 @@
+/***************************************************************************************************
+ * Load `$localize` onto the global scope - used if i18n tags appear in Angular templates.
+ */
+import '@angular/localize/init';
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.
@@ -61,3 +65,29 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+
+ (window as any).global = window;
+
+(document as any).global = window.document;
+(Event as any).global = window.Event;
+(KeyboardEvent as any).global = window.KeyboardEvent;
+(MouseEvent as any).global = window.MouseEvent;
+(FocusEvent as any).global = window.FocusEvent;
+(PointerEvent as any).global = window.PointerEvent;
+(HTMLElement as any).global = window.HTMLElement;
+(HTMLElement as any).global.prototype.getBoundingClientRect = () => {
+  return {
+    left: '',
+    right: '',
+    top: '',
+    bottom: ''
+  };
+};
+
+// If using IgxIconService to register icons
+
+// Other optional depending on your application configuration
+(navigator as any).global = window.navigator;
+(localStorage as any).global = window.localStorage;
+(DOMTokenList as any).global = window.DOMTokenList;

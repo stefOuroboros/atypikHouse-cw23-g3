@@ -4,7 +4,7 @@ form.search{
 
 .search-container{
   background: url("/assets/img/hebergement-insolite.jpg");
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 80vh;
@@ -26,17 +26,21 @@ form.search{
   margin: auto;
   background: #f1f1f1;
   box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+  border: 2px solid #4caf50;
+  opacity: 0.85;
 }
 
 .search-container .title, .categories-container .title, .idea-container .title {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
 }
 .idea-container .title {
   padding-top: 50px;
   color: #fff;
 }
-
+.search-container .title h2{
+  font-size: 1.2em;
+}
 .categories-container, .idea-container{
   margin-top: 100px;
 }
@@ -112,6 +116,25 @@ form.search{
   background: url("/assets/img/bretagne.jpeg");
 }
 
+button.submit
+{
+  width: 175px;
+  margin: auto;
+  padding: 10px;
+  background: #4caf50;
+  color:  #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 25px;
+  margin-top: 25px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  outline: none;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
+  background: none;
+}
 @media screen and (max-width: 640px) {
   .search-container h2{
     font-size: 1.5em;

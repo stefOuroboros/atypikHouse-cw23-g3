@@ -52,9 +52,11 @@ const routes: Routes = [
 
   { path: '', component: HomeComponent},
   { path: 'search', component: SearchComponent},
-  { path: 'house', component: SearchComponent},
+  { path: 'house', component: HouseComponent},
 
   { path: '**', redirectTo: '' },
 ];
 
-export const appRoutingModule = RouterModule.forRoot(routes);
+export const appRoutingModule = RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled'
+});
