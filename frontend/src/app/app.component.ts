@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { AuthenticationService } from './_services';
 import { User } from './_models';
+import { HostListener } from "@angular/core";
+
 
 
 @Component({
@@ -13,16 +15,26 @@ import { User } from './_models';
 })
 export class AppComponent {
   currentUser: User;
-
+  screenWidth;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event?) {
+     this.screenWidth = window.innerWidth;
+     console.log(window.innerWidth)
+
+  }
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
   }
+  ngOnInit() {
+        console.log("ça ne marchera pas")
+    }
 }

@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers';
+import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 
 import { appRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -68,14 +67,22 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatNativeDateModule } from '@angular/material/core';
 
+// carousel
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {CarouselModule} from "ngx-carousel-lib";
+import { NguCarouselModule } from '@ngu/carousel';
+
+
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    InfiniteScrollModule,
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     appRoutingModule,
     FlexLayoutModule,
+    FlexLayoutServerModule,
 
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -110,6 +117,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+
+    IvyCarouselModule,
+    CarouselModule,
+    NguCarouselModule,
   ],
   declarations: [
     AppComponent,
@@ -142,7 +153,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     VariablesGlobales,
 
     // provider used to create fake backend
-    fakeBackendProvider
+    // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })

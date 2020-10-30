@@ -12,10 +12,7 @@ export class HomeComponent implements OnInit {
 
   public homes: Home[];
 
-  search: FormGroup;
-
-
-
+  search: FormGroup
   categories = [
     {value: '0', viewValue: 'Cabane dans les arbres'},
     {value: '1', viewValue: 'Tipi'},
