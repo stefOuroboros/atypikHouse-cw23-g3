@@ -42,16 +42,13 @@ public class User {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "heber_resa",
-	joinColumns = @JoinColumn(name = "userID"),
-	inverseJoinColumns = @JoinColumn(name = "hebergementID"))
-	private List<Hebergement> hebergementsRes;
 
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
 	private List<Hebergement> hebergements;
-	
-	@OneToMany(targetEntity = Reservation.class)
-	@JoinColumn(name = "clientID", nullable=true)
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "reservations",
+	joinColumns = @JoinColumn(name = "userID"),
+	inverseJoinColumns = @JoinColumn(name = "reservationID"))
 	private List<Reservation> reservations;
 }
