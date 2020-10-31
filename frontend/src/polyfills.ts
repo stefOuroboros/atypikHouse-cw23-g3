@@ -55,7 +55,7 @@ import '@angular/localize/init';
  *  (window as any).__Zone_enable_cross_context_check = true;
  *
  */
-
+ 
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
@@ -68,26 +68,3 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 
  (window as any).global = window;
-
-(document as any).global = window.document;
-(Event as any).global = window.Event;
-(KeyboardEvent as any).global = window.KeyboardEvent;
-(MouseEvent as any).global = window.MouseEvent;
-(FocusEvent as any).global = window.FocusEvent;
-(PointerEvent as any).global = window.PointerEvent;
-(HTMLElement as any).global = window.HTMLElement;
-(HTMLElement as any).global.prototype.getBoundingClientRect = () => {
-  return {
-    left: '',
-    right: '',
-    top: '',
-    bottom: ''
-  };
-};
-
-// If using IgxIconService to register icons
-
-// Other optional depending on your application configuration
-(navigator as any).global = window.navigator;
-(localStorage as any).global = window.localStorage;
-(DOMTokenList as any).global = window.DOMTokenList;

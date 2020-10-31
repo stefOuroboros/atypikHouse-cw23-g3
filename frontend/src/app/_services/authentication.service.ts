@@ -24,13 +24,15 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(username, password) {
-    return this.http.post<any>(`${this.variablesGlobales.config.apiUrl}/users/authenticate`, { username, password })
+  login(email, password) {
+    return this.http.post<any>(`${this.variablesGlobales.config.apiUrl}/user/email=`+email, {})
     .pipe(map(user => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
-      return user;
+      if(user && user.password === password){
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+      }
     }));
   }
 

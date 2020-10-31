@@ -35,6 +35,5 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
   ngOnInit() {
-        console.log("ça ne marchera pas")
-    }
+  }
 }

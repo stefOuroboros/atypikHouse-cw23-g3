@@ -52,7 +52,7 @@ const routes: Routes = [
 
   { path: '', component: HomeComponent},
   { path: 'search', component: SearchComponent},
-  { path: 'house', component: HouseComponent},
+  { path: 'house/:id', component: HouseComponent},
 
   { path: '**', redirectTo: '' },
 ];

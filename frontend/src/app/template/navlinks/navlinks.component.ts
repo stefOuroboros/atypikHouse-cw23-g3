@@ -24,7 +24,6 @@ export class NavlinksComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   ngOnInit(): void {
-    console.log(this.type)
   }
 
 }

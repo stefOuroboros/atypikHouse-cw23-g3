@@ -31,3 +31,8 @@ button{
   height: fit-content!important;
   min-height: fit-content!important;
 }
+
+
+.mat-form-field-should-float label{
+      transform: translateY(-0.59375em) scale(0.75)!important;
+}
