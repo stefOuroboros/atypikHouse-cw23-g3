@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Home } from 'src/models/home';
+import { Home } from 'src/app/_models/home';
 import { Observable } from 'rxjs';
 
 
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  public urlHome = "http://localhost:8080/main"
+  public urlHome = "http://localhost:8080"
 
   constructor(private http: HttpClient) { }
 

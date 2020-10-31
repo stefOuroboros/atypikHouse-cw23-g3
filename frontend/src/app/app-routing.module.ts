@@ -35,6 +35,7 @@ const routes: Routes = [
     { path: 'parameters', component: ModifyParametersComponent},
     { path: 'users', component: ModifyUserComponent},
     { path: 'houses', component: ModifyHouseComponent},
+    { path: 'hebers', component: HomeComponent},   
 
   ]},
 

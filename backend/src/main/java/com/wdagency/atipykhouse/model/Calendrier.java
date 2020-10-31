@@ -1,12 +1,12 @@
 package com.wdagency.atipykhouse.model;
 
-import java.util.Calendar;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
@@ -25,8 +25,8 @@ public class Calendrier {
 	@GeneratedValue(generator = "system-uuid")
 	@Column(name = "id", unique = true, nullable = false, length = 36)
 	private String id;
-	private Calendar dateDebut;
-	private Calendar dateFin;
+	private Date dateDebut;
+	private Date dateFin;
 	
 	@OneToOne(targetEntity = Hebergement.class)
 	@JoinColumn(name = "hebergementID", nullable = false)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Home } from 'src/models/home';
+import { Home } from 'src/app/_models/home';
 import { HomeService } from "../../_services";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
