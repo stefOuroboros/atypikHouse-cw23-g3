@@ -9,8 +9,10 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import com.wdagency.atipykhouse.model.Calendrier;
 import com.wdagency.atipykhouse.model.Hebergement;
 import com.wdagency.atipykhouse.model.ROLE;
+import com.wdagency.atipykhouse.model.Reservation;
 import com.wdagency.atipykhouse.model.User;
 import com.wdagency.atipykhouse.service.HebergementService;
 import com.wdagency.atipykhouse.service.UserService;
@@ -46,7 +48,7 @@ public class StartUpListener {
 	    	user.setNom("Gallois");
 	    	user.setPrenom("Stéphane");
 	    	user.setRole(ROLE.ADMIN);
-	    	userRepo.createuser(user);
+	    	userRepo.createUser(user);
 	    	
 	    	
 	    	User user2 = new User();
@@ -62,10 +64,25 @@ public class StartUpListener {
 	    	user2.setNom("Dupont");
 	    	user2.setPrenom("Albert");
 	    	user2.setRole(ROLE.OWNER);
-	    	userRepo.createuser(user2);
+	    	userRepo.createUser(user2);
 	    	
 	    	User usr = userRepo.findUserByEmail("owner1@gmail.com");
-		    
+	    	
+	    	User client = new User();
+	    	client.setAge(33);
+	    	Calendar toNaissance = Calendar.getInstance();
+	    	toNaissance.set(Calendar.YEAR, 1987);
+	    	toNaissance.set(Calendar.MONTH, Calendar.APRIL);
+	    	toNaissance.set(Calendar.DAY_OF_MONTH, 14);
+	    	Date dateNaissance = toNaissance.getTime();
+	    	client.setDateNaissance(dateNaissance);
+	    	client.setEmail("client@gmail.com");
+	    	client.setPassword("pwd");
+	    	client.setNom("Customer");
+	    	client.setPrenom("Monsieur");
+	    	client.setRole(ROLE.PUBLIC);
+	    	userRepo.createUser(client);
+
 	    	Hebergement hb = new Hebergement();
 	    	hb.setLibelle("testLib");
 	    	hb.setPrix(150D);
@@ -73,9 +90,23 @@ public class StartUpListener {
 	    	hb.setPhotos("testUrlPhoto");
 	    	hb.setCouchages(5);
 	    	hb.setOwner(usr);
-//	    	usr.getHebergements().add(hb);
-//	    	userRepo.saveAndFlush(usr);
+
 	    	heberRepo.newHb(hb);
+
+
+	    	Calendrier calendrier = new Calendrier();
+	    	Date date = new Date();
+	    	calendrier.setDateDebut(date);
+	    	calendrier.setDateFin(date);
+	    	calendrier.setHebergement(hb);
+	    	
+	    	Reservation reserv = new Reservation();
+	    	reserv.setClient(client);
+	    	reserv.setCalendrier(calendrier);
+	    	reserv.setHebergement(hb);
+	    	reserv.setLibelle("libelle");
+	    	reserv.setPrix(250.0D);
+
 	    }
 
 }
