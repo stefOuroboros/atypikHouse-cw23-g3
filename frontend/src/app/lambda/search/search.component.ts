@@ -8,7 +8,9 @@ import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
+  minDate: Date;
+  maxDate: Date;
+  dates;
   sum = 4;
   throttle = 10;
   scrollDistance = 1;
@@ -51,6 +53,12 @@ export class SearchComponent implements OnInit {
     });
     this.appendItems(0, this.sum);
 
+    const year = new Date().getFullYear();
+    const day = new Date().getDate();
+    const month = new Date().getMonth();
+    console.log(day)
+    this.minDate = new Date(year, month, day + 1);
+    this.maxDate = new Date(year + 1, month, day +  1);
   }
   checkThisNbPeople(){
     var form = this.search.value
@@ -69,15 +77,12 @@ export class SearchComponent implements OnInit {
       }
     }
   }
-
   appendItems(startIndex, endIndex) {
     this.addItems(startIndex, endIndex, 'push');
   }
-
   prependItems(startIndex, endIndex) {
     this.addItems(startIndex, endIndex, 'unshift');
   }
-
   onScrollDown () {
     // add another 20 items
     const start = this.sum;
@@ -86,13 +91,16 @@ export class SearchComponent implements OnInit {
 
     this.direction = 'down'
   }
-
   onUp() {
     const start = this.sum;
     this.sum += this.item_per_page;
     this.prependItems(start, this.sum);
 
     this.direction = 'up';
+  }
+
+  onDateChange(e){
+    console.log(e);
   }
   ngOnInit(): void {
   }

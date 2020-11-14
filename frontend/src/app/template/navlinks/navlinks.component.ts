@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthenticationService } from '../../_services';
 import { User } from '../../_models';
 import { Router } from '@angular/router';
+import { Role } from '../../_models';
 
 
 @Component({
@@ -12,12 +13,13 @@ import { Router } from '@angular/router';
 export class NavlinksComponent implements OnInit {
   @Input('type') type: string;
   currentUser: User;
-
+  Role = Role;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.currentUser = this.authenticationService.currentUserValue;
+    console.log(this.currentUser);
   }
   logout() {
     this.authenticationService.logout();
@@ -25,5 +27,6 @@ export class NavlinksComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+
 
 }

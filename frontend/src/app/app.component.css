@@ -1,6 +1,7 @@
 ::ng-deep nav .mat-sidenav{
   width: 100%;
   max-width: 300px;
+  position: fixed;
 }
 
 ::ng-deep nav a.mat-button:hover{
@@ -28,4 +29,12 @@
 
 nav .logo img{
   height: 50px;
+}
+
+::ng-deep .mat-drawer-inner-container {
+  height: inherit!important;
+}
+
+::ng-deep .mat-drawer-container {
+  min-height: 100vh!important;
 }

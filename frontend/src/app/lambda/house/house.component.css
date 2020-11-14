@@ -3,24 +3,26 @@
   max-height: 75vh;
   width: 100%;
 }
-.carousel-arrow{
-  margin-top: calc(-33% - 40px);
-  position: relative;
+.carousel-container-img .carousel-arrow{
+  mtop: calc( 50% - 40px);
+  position: absolute;
   height: 80px;
   width: 25px;
   outline: none;
   display: flex;
   justify-content: space-around;
+  z-index: 1000;
   align-items: center;
   box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
 }
 .rightRs{
+  right: 0px;
   float: right;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 .leftRs{
-  float: left;
+  left : 0px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -45,7 +47,7 @@
   margin-top: -0.5em;
 }
 
-.carousel-container{
+.carousel-container-img{
   background: #282828;
 }
 ::ng-deep .ngucarousel-items .item {
@@ -110,4 +112,48 @@ button.submit
   margin-top: 25px;
   box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
   outline: none;
+}
+
+.title_info h3{
+  font-family: "Atma", cursive;
+  border-bottom: 1px solid;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 25px;
+}
+.title_info{
+  width: 100%;
+}
+.caracteristiques, .infos, .activities, .emplacement{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.content{
+  padding: 15px;
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  font-family: 'Nunito';
+  background: #fff;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+
+.carac, .activity, .info{
+  margin-bottom: 15px;
+}
+
+.google-map{
+  width: 100%;
+  height: 300px;
+}
+.carousel-container-comments{
+  margin-top: 50px;
+}
+.row{
+  margin: 0px!important;
 }

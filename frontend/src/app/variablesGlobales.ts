@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
+
+
 @Injectable()
 export class VariablesGlobales {
+  constructor(
+  ) { }
   config = {
-    apiUrl : 'http://localhost:8080'
+    apiUrl : 'https://api-atypik.herokuapp.com',
+    user : JSON.parse(localStorage.getItem('currentUser')),
   };
 }
