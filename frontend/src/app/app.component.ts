@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component,  Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 import { AuthenticationService } from './_services';
 import { User } from './_models';
 import { HostListener } from "@angular/core";
+import {isPlatformBrowser} from '@angular/common';
 
 
 
@@ -16,18 +18,22 @@ import { HostListener } from "@angular/core";
 export class AppComponent {
   currentUser: User;
   screenWidth;
+  static isBrowser = new BehaviorSubject<boolean>(null);
+
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    AppComponent.isBrowser.next(isPlatformBrowser(platformId));
+    this.currentUser = this.authenticationService.currentUserValue;
 
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
-     this.screenWidth = window.innerWidth;
-     console.log(window.innerWidth)
+    this.screenWidth = window.innerWidth;
+    console.log(window.innerWidth)
 
   }
   logout() {
@@ -35,6 +41,5 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
   ngOnInit() {
-        console.log("ça ne marchera pas")
-    }
+  }
 }

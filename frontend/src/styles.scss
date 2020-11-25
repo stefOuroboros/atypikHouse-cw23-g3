@@ -23,11 +23,23 @@ h2{
 }
 
 button{
-    border: none;
-    outline: none;
+    border: none!important;
+    outline: none!important;
 }
 
 .mat-sidenav-container{
   height: fit-content!important;
   min-height: fit-content!important;
+}
+
+
+.mat-form-field-should-float label{
+      transform: translateY(-0.59375em) scale(0.75)!important;
+}
+
+.rate {
+  color: #f1c40f;
+}
+.align-items-flex-end{
+  align-items: flex-end;
 }

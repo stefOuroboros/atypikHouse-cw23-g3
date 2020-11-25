@@ -3,7 +3,7 @@
     <form class="col-xl-3 col-md-4 col-sm-12" [formGroup]="search" class="search" submit="console.log('ok')">
       <mat-form-field appearance="fill" class="col-12">
         <mat-label>Catégories</mat-label>
-        <mat-select multiple formControlName="category" required>
+        <mat-select multiple formControlName="category">
           <mat-option *ngFor="let category of categories" [value]="category.value">
             {{category.viewValue}}
           </mat-option>
@@ -11,7 +11,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill" class="col-12">
         <mat-label>Caractéristiques</mat-label>
-        <mat-select multiple formControlName="category" required>
+        <mat-select multiple formControlName="category">
           <mat-option *ngFor="let feature of features" [value]="feature.value">
             {{feature.viewValue}}
           </mat-option>
@@ -21,19 +21,18 @@
         <mat-label class="numberPeopleLabel">Nombre de personnes</mat-label>
         <input matInput type="number"  formControlName ="peopleNumber" (change) = checkThisNbPeople() min = "0" max ="20">
       </mat-form-field>
-      <mat-form-field appearance="fill" class="col-12">
-        <mat-label>Début du séjour</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="start" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class="col-12">
-        <mat-label>Fin du Séjour</mat-label>
-        <input matInput [matDatepicker]="picker2" formControlName="end" required>
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
+      <mat-form-field>
+          <input matInput
+          [min]="minDate"
+          [max]="maxDate"
+          placeholder="Sélectionnez les Dates"
+          [satDatepicker]="picker"
+          (click)="picker.open()"
+          (dateInput)="onDateChange($event.value)"
+          [value]="dates">
+          <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+          <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+        </mat-form-field>
       <div class="col-12">
         <button  type="submit" name="button" class="submit" >
           <mat-icon>search</mat-icon>
@@ -57,23 +56,32 @@
         <mat-card-title>Cabane dans les arbres Petit singe</mat-card-title>
         <mat-card-subtitle>65€/nuit</mat-card-subtitle>
       </mat-card-header>
-      <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="carouselItems">
-        <div *nguCarouselDef="let item;" class="item">
-          <div class="tile">
-            <img src="./assets/img/{{item}}" alt="{{item}}">
+      <div class="carousel-container">
+
+        <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="carouselItems">
+          <div *nguCarouselDef="let item;" class="item">
+            <div class="tile">
+              <img src="./assets/img/{{item}}" alt="{{item}}">
+            </div>
           </div>
-        </div>
 
-        <button NguCarouselNext class="rightRs carousel-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button>
-        <button NguCarouselPrev class="leftRs carousel-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
-
-
-      </ngu-carousel>
+          <button NguCarouselNext class="rightRs carousel-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button>
+          <button NguCarouselPrev class="leftRs carousel-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
+        </ngu-carousel>
+      </div>
       <mat-card-content>
 
       </mat-card-content>
+      <div class="rate-container">
+        <mat-icon class="rate"> grade</mat-icon>
+        <mat-icon class="rate"> grade</mat-icon>
+        <mat-icon class="rate"> grade</mat-icon>
+        <mat-icon class="rate"> grade</mat-icon>
+        <mat-icon class="rate" fontSet="material-icons-outlined"> grade</mat-icon>
+      </div>
       <mat-card-actions>
-        <button mat-button class="details">Détails</button>
+        <a class="details" [routerLink]="['/house', hebergement]">Détails</a>
+        <!-- <a class="details" [routerLink]="['/house']" [queryParams]="{ hebergement: hebergement}">Détails</a> -->
       </mat-card-actions>
     </mat-card>
   </div>
