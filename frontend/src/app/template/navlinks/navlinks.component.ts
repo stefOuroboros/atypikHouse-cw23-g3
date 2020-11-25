@@ -19,7 +19,9 @@ export class NavlinksComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
-    console.log(this.currentUser);
+    this.authenticationService.currentUserObs().subscribe(data =>{
+      this.currentUser = data;
+    })
   }
   logout() {
     this.authenticationService.logout();

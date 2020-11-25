@@ -1,5 +1,5 @@
 import { MatTableDataSource } from '@angular/material/table';
-import {Component, AfterViewInit, ViewChild} from '@angular/core';
+import {Component, AfterViewInit, ViewChild, } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -16,7 +16,7 @@ import { ModifyHouseComponent } from '../../template/modify-house/modify-house.c
 export class AdminHouseComponent {
   filterValues = {};
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'Author', 'Author_id', 'Name', 'House_id', 'Statut'];
+  displayedColumns: string[] = ['id', 'Author', 'Author_id', 'Nom', 'House_id', 'Statut', 'Action' ];
 
   filterSelectObj = [];
   filterInputObj = [];
@@ -35,14 +35,14 @@ export class AdminHouseComponent {
     this.filterSelectObj = [
       {
         name: 'Statut',
-        columnProp: 'Status',
+        columnProp: 'Statut',
         options: []
       },
     ];
     this.filterInputObj = [
       {
         name: 'Nom',
-        columnProp: 'Name',
+        columnProp: 'Nom',
         options: []
       },
     ];
@@ -50,7 +50,7 @@ export class AdminHouseComponent {
       value.modelValue = "";
     })
     this.filterInputObj.forEach((value, key) => {
-      value.modelValue = "fuck";
+      value.modelValue = "";
     })
   }
 
@@ -69,8 +69,8 @@ export class AdminHouseComponent {
     dialogConfig.autoFocus = true;
 
     this.dialog.open(ModifyHouseComponent, {
-      width: '75vw',
-      height: '75vh',
+      width: '90vw',
+      height: '90vh',
       data: {
         dataKey: element
       }
@@ -97,7 +97,7 @@ export class AdminHouseComponent {
         "id": 1,
         "Author": "Leanne Graham",
         "Author_id": 23,
-        "Name" : "Cabane du bois",
+        "Nom" : "Cabane du bois",
         "House_id" : 12,
         "Statut": "Pending",
       },
@@ -105,7 +105,7 @@ export class AdminHouseComponent {
         "id": 1,
         "Author": "Leanne Graham",
         "Author_id": 23,
-        "Name" : "Cabane du bois",
+        "Nom" : "Cabane du bois",
         "House_id" : 12,
         "Statut": "Published",
       },
@@ -113,7 +113,7 @@ export class AdminHouseComponent {
         "id": 1,
         "Author": "Leanne Graham",
         "Author_id": 23,
-        "Name" : "Cabane du bois",
+        "Nom" : "Cabane du bois",
         "House_id" : 12,
         "Statut": "Published",
       },
@@ -121,7 +121,7 @@ export class AdminHouseComponent {
         "id": 1,
         "Author": "Leanne Graham",
         "Author_id": 23,
-        "Name" : "Cabane du bois",
+        "Nom" : "Cabane du bois",
         "House_id" : 12,
         "Statut": "Pending",
       },

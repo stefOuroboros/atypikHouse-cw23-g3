@@ -6,8 +6,8 @@
   </ng-container>
   <ng-container *ngIf="currentUser">
     <ng-container *ngIf="currentUser.role == Role.Admin">
-      <a class="nav-item nav-link" mat-button routerLink="./houses">Hébergement</a>
-      <a class="nav-item nav-link" mat-button routerLink="./users">Utilisateurs</a>
+      <a class="nav-item nav-link" mat-button routerLink="/admin/houses">Hébergement</a>
+      <a class="nav-item nav-link" mat-button routerLink="/admin/users">Utilisateurs</a>
       <a class="nav-item nav-link"  mat-button (click)="logout()">Logout</a>
     </ng-container>
     <ng-container *ngIf="currentUser.role == Role.Landlord">

@@ -53,7 +53,7 @@ export class AdminUserComponent{
       value.modelValue = "";
     })
     this.filterInputObj.forEach((value, key) => {
-      value.modelValue = "fuck";
+      value.modelValue = "";
     })
   }
 

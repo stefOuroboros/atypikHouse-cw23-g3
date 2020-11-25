@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { Role } from './_models';
 
 import { AuthGuard } from './_helpers';
+import { Auth2Guard } from './_helpers';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -54,9 +55,9 @@ const routes: Routes = [
   { path: '', component: LambdaComponent, children:[
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: '', canActivate: [AuthGuard], data: { roles: ["USER"] }, component: HomeComponent, pathMatch: 'full'  },
-    { path: 'search', canActivate: [AuthGuard], data: { roles: ["USER"] }, component: SearchComponent},
-    { path: 'house/:id',canActivate: [AuthGuard], data: { roles: ["USER"] }, component: HouseComponent},
+    { path: '', canActivate: [Auth2Guard], data: { roles: ["USER"] }, component: HomeComponent, pathMatch: 'full'  },
+    { path: 'search', canActivate: [Auth2Guard], data: { roles: ["USER"] }, component: SearchComponent},
+    { path: 'house/:id',canActivate: [Auth2Guard], data: { roles: ["USER"] }, component: HouseComponent},
   ]},
   { path: '**', redirectTo: 'not_found', canActivate: [AuthGuard], data: { roles: ["USER"] }},
 

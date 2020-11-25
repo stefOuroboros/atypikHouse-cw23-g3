@@ -1,47 +1,23 @@
-table {
-  width: 100%;
+table{
+  width: 100%!important;
 }
 
-tr.example-detail-row {
-  height: 0;
+.refresh{
+  border-radius: 30px;
+  margin-left:  15px;
 }
 
-tr.example-element-row:not(.example-expanded-row):hover {
-  background: whitesmoke;
+::ng-deep select.mat-input-element{
+  padding-top: 1.5em!important;
+  font-size: 14px;
 }
 
-tr.example-element-row:not(.example-expanded-row):active {
-  background: #efefef;
+::ng-deep input.mat-input-element{
+  padding-top: 1em!important;
+  font-size: 14px;
 }
 
-.example-element-row td {
-  border-bottom-width: 0;
-}
-
-.example-element-detail {
-  overflow: hidden;
-  display: flex;
-}
-
-.example-element-diagram {
-  min-width: 80px;
-  border: 2px solid black;
-  padding: 8px;
-  font-weight: lighter;
-  margin: 8px 0;
-  height: 104px;
-}
-
-.example-element-symbol {
-  font-weight: bold;
-  font-size: 40px;
-  line-height: normal;
-}
-
-.example-element-description {
-  padding: 16px;
-}
-
-.example-element-description-attribution {
-  opacity: 0.5;
+::ng-deep input.mat-input-element + span > label{
+  font-size: 12px!important;
+  transform: scale(1) translateY(0px)!important;
 }

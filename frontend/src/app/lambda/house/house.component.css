@@ -4,7 +4,6 @@
   width: 100%;
 }
 .carousel-container-img .carousel-arrow{
-  mtop: calc( 50% - 40px);
   position: absolute;
   height: 80px;
   width: 25px;
@@ -156,4 +155,9 @@ button.submit
 }
 .row{
   margin: 0px!important;
+}
+
+::ng-deep .carousel-container-img .ngucarousel {
+    display: flex;
+    align-items: center;
 }

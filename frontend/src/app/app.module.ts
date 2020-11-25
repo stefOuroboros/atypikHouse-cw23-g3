@@ -8,7 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 
 import { appRoutingModule } from './app-routing.module';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { ErrorInterceptor } from './_helpers';
+//import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './lambda/home/home.component';
@@ -75,12 +76,17 @@ import { NguCarouselModule } from '@ngu/carousel';
 
 //google map
 import { AgmCoreModule } from '@agm/core';
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+
 
 import {AuthGuard} from './_helpers';
 import { ModifyHouseComponent } from './template/modify-house/modify-house.component';
 
 import { FormsModule } from '@angular/forms';
 import { ModifyUserComponent } from './template/modify-user/modify-user.component';
+import { ChipsComponent } from './template/chips/chips.component';
+
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   imports: [
@@ -134,11 +140,13 @@ import { ModifyUserComponent } from './template/modify-user/modify-user.componen
     NguCarouselModule,
 
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCpp11S-8K5FBH987cU9LagQo8OFWGF5Cw'
+      apiKey: 'AIzaSyCpp11S-8K5FBH987cU9LagQo8OFWGF5Cw',
+      libraries: ['places']
     }),
-
+    MatGoogleMapsAutocompleteModule,
     FormsModule,
 
+    CookieModule.forRoot(), 
   ],
   declarations: [
     AppComponent,
@@ -164,15 +172,14 @@ import { ModifyUserComponent } from './template/modify-user/modify-user.componen
     NavlinksComponent,
     ModifyHouseComponent,
     ModifyUserComponent,
+    ChipsComponent,
 
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    //{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     VariablesGlobales,
-    AuthGuard
-
     // provider used to create fake backend
     // fakeBackendProvider
   ],
