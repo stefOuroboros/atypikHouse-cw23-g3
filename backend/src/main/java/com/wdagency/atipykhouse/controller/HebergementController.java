@@ -7,18 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wdagency.atipykhouse.model.Hebergement;
 import com.wdagency.atipykhouse.service.HebergementService;
 @CrossOrigin
-@RestController(value="homes")
+@RestController
+@RequestMapping("home")
 public class HebergementController {
 
 	@Autowired
 	HebergementService hebService;
 	
-	@GetMapping
+	@GetMapping(value="allHomes")
 	public List<Hebergement> getHebergements() {
 		return hebService.findAll();
 	}
