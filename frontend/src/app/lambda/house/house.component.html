@@ -1,1 +1,109 @@
-<p>house works!</p>
+<div class="carousel-container-img">
+  <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="carouselItems">
+    <div *nguCarouselDef="let item;" class="item">
+      <div class="tile">
+        <img src="./assets/img/{{item}}" alt="{{item}}">
+      </div>
+    </div>
+
+    <button NguCarouselNext class="rightRs carousel-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button>
+    <button NguCarouselPrev class="leftRs carousel-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
+  </ngu-carousel>
+</div>
+
+<div class="title">
+  <h1> LA cabane Du singe {{hebergement}}</h1>
+  <h2> 55€/nuit</h2>
+</div>
+
+<form [formGroup]="search" class="search" submit="console.log('ok')">
+
+  <mat-form-field class="col-xs-3 col-md-3 col-sm-12">
+    <mat-label class="numberPeopleLabel">Nombre de personnes</mat-label>
+    <input matInput type="number"  formControlName ="peopleNumber" (change) = checkThisNbPeople() min = "0" max ="20">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput
+    [min]="minDate"
+    [max]="maxDate"
+    placeholder="Sélectionnez les Dates"
+    [satDatepicker]="picker"
+    (click)="picker.open()"
+    (dateInput)="onDateChange($event.value)"
+    [value]="dates">
+    <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+    <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+  </mat-form-field>
+  <div class="col-12">
+    <button  type="submit" name="button" class="submit" >
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</form>
+
+<div class="row">
+
+  <div class="caracteristiques col-lg-5 col-md-5 col-sm-12 mx-auto" *ngIf="caracteristiques != null && caracteristiques.length > 0">
+    <div class="title_info">
+      <h3> Caratéristiques du Logement</h3>
+    </div>
+    <div class="content">
+      <div class ="carac" *ngFor = "let carac of caracteristiques">
+        {{carac}}
+      </div>
+    </div>
+  </div>
+
+  <div class="infos col-lg-5 col-md-5 col-sm-12 mx-auto" *ngIf="infos != null && infos.length > 0">
+    <div class="title_info">
+      <h3>Infos Pratiques</h3>
+    </div>
+    <div class="content">
+      <div class ="info" *ngFor = "let info of infos">
+        {{info}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="activities col-lg-5 col-md-5 col-sm-12 mx-auto" *ngIf="activities != null && activities.length > 0">
+    <div class="title_info">
+      <h3>Activitées à Proximité</h3>
+    </div>
+    <div class="content">
+      <div class ="activity" *ngFor = "let activity of activities">
+        {{activity}}
+      </div>
+    </div>
+  </div>
+  <div class=" emplacement col-lg-5 col-md-5 col-sm-12 mx-auto">
+    <div class="title_info">
+      <h3>Emplacement</h3>
+    </div>
+    <div class="content">
+      <agm-map [latitude]="lat" [longitude]="lng" class="google-map"></agm-map>
+    </div>
+  </div>
+  <div class="comments container">
+    <div class="carousel-container-comments">
+      <ngu-carousel #myCarouselItems [inputs]="carouselConfigComment" [dataSource]="carouselComments" class="carousel">
+        <div *nguCarouselDef="let item;" class="item">
+          <div class="tile">
+            <h4>  {{item.author}}</h4>
+            <p>{{item.content}}</p>
+            <div class="rate-container">
+              <ng-container *ngFor="let number of [1,2,3,4,5]" >
+                <mat-icon fontSet="material-icons-outlined" class="rate" *ngIf =" number > item.stars"> grade</mat-icon>
+                <mat-icon class="rate" *ngIf =" number <= item.stars"> grade</mat-icon>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <button NguCarouselNext class="rightRs carousel-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button>
+        <button NguCarouselPrev class="leftRs carousel-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
+
+      </ngu-carousel>
+    </div>
+  </div>

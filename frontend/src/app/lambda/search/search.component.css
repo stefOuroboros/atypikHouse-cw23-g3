@@ -12,7 +12,7 @@ carousel{
   margin-top: 25px;
 }
 
-.mat-card button.details{
+.mat-card a.details{
   width: 175px;
   margin: auto;
   padding: 4px;
@@ -24,7 +24,6 @@ carousel{
   border-radius: 25px;
   margin-top: 25px;
   box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-  outline: none;
   margin-bottom: 15px;
 }
 
@@ -39,11 +38,11 @@ carousel{
 display: none;
 } */
 
-/* ::ng-deep .mat-form-field-flex{
-background: none;
-border: 1px solid black;
-border-radius: 25px;
-} */
+::ng-deep .mat-form-field{
+  max-width: 300px;
+  display: block;
+  margin: auto;
+}
 ::ng-deep  .mat-form-field-flex {
   background: none!important;
   padding: .75em .75em 0 .75em!important;
@@ -109,9 +108,24 @@ button.submit
   }
 }
 
+.carousel-container{
+  background: #282828;
+}
+::ng-deep .ngucarousel-items .item {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
 .tile img{
+  height: 100%;
+  max-height: 500px;
+  width: 100%;
+}
+.tile{
   width: 100%
 }
+
 .carousel-arrow{
   margin-top: calc(-33% - 40px);
   position: relative;

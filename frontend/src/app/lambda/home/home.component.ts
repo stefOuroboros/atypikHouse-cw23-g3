@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('coucou')
     this.homeService.home().subscribe(
       homes => this.homes = homes
     );

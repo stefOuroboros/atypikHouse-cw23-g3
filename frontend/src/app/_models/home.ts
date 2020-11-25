@@ -1,6 +1,6 @@
 export class Home {
 
-    private id: number;
+  private id: number;
 	private libelle: string;
 	private type: string;
 	private couchages: number;
