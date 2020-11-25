@@ -23,7 +23,7 @@ public class HebergementController {
 		return hebService.findAll();
 	}
 	
-	@GetMapping(value="id={id}")
+	@GetMapping(value="home={id}")
 	public Hebergement getHebergement(String id) {
 		return hebService.findOne(id);
 	}
@@ -41,14 +41,11 @@ public class HebergementController {
 	public void updateHebergement(Hebergement hebergement) {
 		try {
 			Hebergement hbToUpdate = hebService.findOne(hebergement.getId());
-			hbToUpdate.setCouchages(hebergement.getCouchages());
-			hbToUpdate.setLibelle(hebergement.getLibelle());
-			hbToUpdate.setPhotos(hebergement.getPhotos());
-			hbToUpdate.setPrix(hebergement.getPrix());
-			hbToUpdate.setType(hebergement.getType());
+			hbToUpdate.setType(hebergement.getType());	
 			hebService.pacthOne(hbToUpdate);
 		} catch (HibernateException e) {
 			e.getMessage();
+			
 		}
 	}
 }

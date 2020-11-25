@@ -1,11 +1,11 @@
 package com.wdagency.atipykhouse.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -41,9 +41,7 @@ public class Reservation {
 	@JoinColumn(name = "hebergementID", nullable = false)
 	private Hebergement hebergement;
 	
-	@ManyToOne(targetEntity = User.class)
-	@JoinTable(name = "reservations",
-	joinColumns = @JoinColumn(name = "reservationID"),
-	inverseJoinColumns = @JoinColumn(name = "userID"))
+	@ManyToOne(targetEntity = User.class, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "clientID", nullable=false)
 	private User client;
 }
