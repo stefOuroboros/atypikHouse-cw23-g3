@@ -86,6 +86,8 @@ import { FormsModule } from '@angular/forms';
 import { ModifyUserComponent } from './template/modify-user/modify-user.component';
 import { ChipsComponent } from './template/chips/chips.component';
 
+import { FooterComponent } from './template/footer/footer.component';
+import { CguComponent } from './common/cgu/cgu.component';
 import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
@@ -146,7 +148,7 @@ import { CookieModule } from 'ngx-cookie';
     MatGoogleMapsAutocompleteModule,
     FormsModule,
 
-    CookieModule.forRoot(), 
+    CookieModule.forRoot(),
   ],
   declarations: [
     AppComponent,
@@ -173,6 +175,8 @@ import { CookieModule } from 'ngx-cookie';
     ModifyHouseComponent,
     ModifyUserComponent,
     ChipsComponent,
+    FooterComponent,
+    CguComponent,
 
 
   ],

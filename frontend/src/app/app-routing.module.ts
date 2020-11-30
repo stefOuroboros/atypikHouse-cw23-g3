@@ -26,10 +26,15 @@ import { UserProfilComponent } from './user/user-profil/user-profil.component';
 import { ReservationsComponent } from './user/reservations/reservations.component';
 import { UserReserveComponent } from './user/user-reserve/user-reserve.component';
 
+import { FooterComponent } from './template/footer/footer.component';
+import { CguComponent } from './common/cgu/cgu.component';
+import { LegalsMentionsComponent } from './common/legals-mentions/legals-mentions.component';
+
 
 
 
 const routes: Routes = [
+
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] }, children:[
     { path: 'parameters', component: ModifyParametersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin]}},
     { path: '', component: ModifyParametersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin]},  pathMatch: 'full' },
@@ -58,7 +63,7 @@ const routes: Routes = [
     { path: 'search', canActivate: [Auth2Guard], data: { roles: ["USER"] }, component: SearchComponent},
     { path: 'house/:id',canActivate: [Auth2Guard], data: { roles: ["USER"] }, component: HouseComponent},
   ]},
-  { path: '**', redirectTo: 'not_found', canActivate: [AuthGuard], data: { roles: ["USER"] }},
+  { path: 'cgu', component: CguComponent },
 
 ];
 
