@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 import { Hebergement } from 'src/app/_models/hebergement';
 import { HomeService } from 'src/app/_services';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-search',
@@ -47,8 +48,15 @@ export class SearchComponent implements OnInit {
     'paris.jpg',
     'spa.jpg',
   ];
-  constructor(private homeService: HomeService) {
-
+  constructor(
+    private homeService: HomeService,
+    private title: Title,
+    private meta : Meta,
+  ) {
+    this.title.setTitle('Atypique House - Logement Insolite - Recherche');
+    this.meta.updateTag(
+      { name: 'description', content: 'Page de recherche de logement  Atypik House - Location de logements atypique et insolite en France' }
+    );
     this.homeService.home().subscribe(homes => this.homes = homes);
     this.search = new FormGroup({
       category : new FormControl(),

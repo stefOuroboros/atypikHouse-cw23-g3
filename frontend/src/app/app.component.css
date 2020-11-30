@@ -1,7 +1,6 @@
 ::ng-deep nav .mat-sidenav{
   width: 100%;
   max-width: 300px;
-  position: fixed;
 }
 
 ::ng-deep nav a.mat-button:hover{
@@ -14,27 +13,12 @@
 
 ::ng-deep nav .mat-toolbar{
   display: flex;
-  flex-direction: row-reverse;
+    flex-direction: row-reverse;
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
-  position: fixed;
-  z-index: 20;
-
-}
-
-::ng-deep .mat-sidenav-content, ::ng-deep .mat-drawer-inner-container{
-  margin-top: 64px;
 }
 
 nav .logo img{
   height: 50px;
-}
-
-::ng-deep .mat-drawer-inner-container {
-  height: inherit!important;
-}
-
-::ng-deep .mat-drawer-container {
-  min-height: 100vh!important;
 }
