@@ -15,7 +15,7 @@ export class HomeService {
 
 
   home(): Observable<Home[]> {
-    return this.http.get<Home[]>(this.urlHome + "/homes");
+    return this.http.get<Home[]>(this.urlHome + "/home/allHomes");
   }
 
 }
