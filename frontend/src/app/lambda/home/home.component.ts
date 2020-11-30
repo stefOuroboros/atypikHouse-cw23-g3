@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Home } from 'src/app/_models/home';
+import { Hebergement } from 'src/app/_models/hebergement';
 import { HomeService } from "../../_services";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -10,7 +10,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  public homes: Home[];
+  public homes: Hebergement[];
 
   search: FormGroup
   categories = [

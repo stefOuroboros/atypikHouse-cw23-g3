@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
+import { Hebergement } from 'src/app/_models/hebergement';
+import { HomeService } from 'src/app/_services';
 
 @Component({
   selector: 'app-search',
@@ -8,6 +10,8 @@ import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
+  homes: Hebergement[];
   minDate: Date;
   maxDate: Date;
   dates;
@@ -30,7 +34,7 @@ export class SearchComponent implements OnInit {
     {value: '2', viewValue: 'feature - 3'}
   ]
   data_hebergements = ['1','2','3','4','1','2','3','4','1','2','3','4'];
-  hebergements = []
+  hebergements = [];
   carouselConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
     load: 3,
@@ -43,7 +47,9 @@ export class SearchComponent implements OnInit {
     'paris.jpg',
     'spa.jpg',
   ];
-  constructor() {
+  constructor(private homeService: HomeService) {
+
+    this.homeService.home().subscribe(homes => this.homes = homes);
     this.search = new FormGroup({
       category : new FormControl(),
       start: new FormControl(),

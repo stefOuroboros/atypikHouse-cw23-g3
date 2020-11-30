@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Home } from 'src/app/_models/home';
+import { Hebergement } from 'src/app/_models/hebergement';
 import { Observable } from 'rxjs';
 
 
@@ -14,8 +14,8 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
 
-  home(): Observable<Home[]> {
-    return this.http.get<Home[]>(this.urlHome + "/home/allHomes");
+  home(): Observable<Hebergement[]> {
+    return this.http.get<Hebergement[]>(this.urlHome + "/home/allHomes");
   }
 
 }

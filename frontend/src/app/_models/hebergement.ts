@@ -3,9 +3,10 @@ import { Reservation } from './reservation';
 import { Type } from './type';
 import { User } from './user';
 
-export class Home {
+export class Hebergement {
 
   private id: string;
+  private name: string;
 	private notation: number;
 	private price: number;
 	private rooms: number;

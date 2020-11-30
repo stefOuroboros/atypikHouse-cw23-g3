@@ -1,3 +1,9 @@
+<ng-container *ngFor="let home of homes">
+  <div class="">
+    {{ home.name }}
+    {{ home.type.name}}
+  </div>
+</ng-container>
 <div class="row">
   <div class="search-tools col-xl-3 col-md-4 col-sm-12">
     <form class="col-xl-3 col-md-4 col-sm-12" [formGroup]="search" class="search" submit="console.log('ok')">
