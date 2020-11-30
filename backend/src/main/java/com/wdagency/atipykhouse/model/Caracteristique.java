@@ -21,9 +21,9 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="caracteristiques")
+@Table(name="caracteristique")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name", scope = String.class)
-public class Caracteristiques {
+public class Caracteristique {
 
 
     @Id

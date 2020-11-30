@@ -38,6 +38,6 @@ public class Type {
 	@JoinTable(name = "types",
 	joinColumns = @JoinColumn(name = "typeID"),
 	inverseJoinColumns = @JoinColumn(name = "caracteristiqueName"))
-	private List<Caracteristiques> caracteristique;
+	private List<Caracteristique> caracteristique;
 	
 }

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 import { Hebergement } from 'src/app/_models/hebergement';
+import { Type } from 'src/app/_models/type';
 import { HomeService } from 'src/app/_services';
+import { TypeService } from 'src/app/_services/type.service';
 
 @Component({
   selector: 'app-search',
@@ -11,6 +13,7 @@ import { HomeService } from 'src/app/_services';
 })
 export class SearchComponent implements OnInit {
 
+  types: Type[];
   homes: Hebergement[];
   minDate: Date;
   maxDate: Date;
@@ -23,11 +26,7 @@ export class SearchComponent implements OnInit {
   modalOpen = false;
   item_per_page = 4;
   search: FormGroup;
-  categories = [
-    {value: '0', viewValue: 'Cabane dans les arbres'},
-    {value: '1', viewValue: 'Tipi'},
-    {value: '2', viewValue: 'Igloo'}
-  ];
+
   features = [
     {value: '0', viewValue: 'feature - 1'},
     {value: '1', viewValue: 'feature - 2'},
@@ -47,9 +46,10 @@ export class SearchComponent implements OnInit {
     'paris.jpg',
     'spa.jpg',
   ];
-  constructor(private homeService: HomeService) {
+  constructor(private homeService: HomeService, private typeService: TypeService) {
 
     this.homeService.home().subscribe(homes => this.homes = homes);
+    this.typeService.types().subscribe(types => this.types = types);
     this.search = new FormGroup({
       category : new FormControl(),
       start: new FormControl(),

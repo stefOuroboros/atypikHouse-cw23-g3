@@ -44,8 +44,14 @@ public class Hebergement {
     @Column(name = "capacity", nullable = false)
     private int capacity;
 
-    @Column(name = "position", nullable = false)
-    private int position;
+    @Column(name = "postalCode", nullable = false)
+    private int postalCode;
+    
+    @Column(name = "longitude")
+    private Double longitude;
+    
+    @Column(name = "latitude")
+    private Double latitude;
     
 	@ManyToOne(targetEntity = Type.class, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "typeName", nullable=false)

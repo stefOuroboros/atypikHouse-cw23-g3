@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Hebergement } from 'src/app/_models/hebergement';
 import { HomeService } from "../../_services";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  public homes: Hebergement[];
+  @Input()
+  id: string;
+  public home: Hebergement;
 
   search: FormGroup
   categories = [
@@ -19,7 +22,9 @@ export class HomeComponent implements OnInit {
     {value: '2', viewValue: 'Igloo'}
   ];
 
-  constructor(private homeService: HomeService) {
+  constructor(private homeService: HomeService, private route: ActivatedRoute) {
+    this.id =  this.route.snapshot.params.id;
+    this.homeService.findHome(this.id)
     this.search = new FormGroup({
       category : new FormControl(),
       start: new FormControl(),
@@ -29,10 +34,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('coucou')
-    this.homeService.home().subscribe(
-      homes => this.homes = homes
-    );
   }
 
 }

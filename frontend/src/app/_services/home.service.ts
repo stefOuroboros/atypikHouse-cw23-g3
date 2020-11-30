@@ -18,4 +18,8 @@ export class HomeService {
     return this.http.get<Hebergement[]>(this.urlHome + "/home/allHomes");
   }
 
+  findHome(id: string): Observable<Hebergement> {
+    return this.http.get<Hebergement>(this.urlHome + "/home/" + id);
+  }
+
 }
