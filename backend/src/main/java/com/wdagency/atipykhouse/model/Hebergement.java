@@ -28,7 +28,25 @@ public class Hebergement {
     @GeneratedValue(generator = "system-uuid")
     @Column(name = "id", unique = true, nullable = false, length = 36, insertable=false, updatable=false)
 	private String id;
+    
+    @Column(name = "name")
+	private String name;
 
+    @Column(name ="notation")
+    private int notation;
+    
+    @Column(name = "price",nullable = false)
+    private int price;
+
+    @Column(name = "rooms",nullable = false)
+    private int rooms;
+
+    @Column(name = "capacity", nullable = false)
+    private int capacity;
+
+    @Column(name = "position", nullable = false)
+    private int position;
+    
 	@ManyToOne(targetEntity = Type.class, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "typeName", nullable=false)
 	private Type type;

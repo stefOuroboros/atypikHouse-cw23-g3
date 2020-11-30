@@ -111,6 +111,11 @@ public class StartUpListener {
 	    	Hebergement hb = new Hebergement();
 	    	hb.setType(cabaneData);
 	    	hb.setOwner(usr);
+	    	hb.setNotation(3);
+	    	hb.setPrice(57);
+	    	hb.setRooms(3);
+	    	hb.setCapacity(4);
+	    	hb.setName("La Cabane du Singe");
 
 	    	heberRepo.newHb(hb);
 

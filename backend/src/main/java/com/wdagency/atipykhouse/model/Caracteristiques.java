@@ -34,6 +34,9 @@ public class Caracteristiques {
 	
 	@Column(name = "name", unique = true, nullable = false, length = 36)
 	private String name;
+	
+	@Column(name="value")
+	private String value;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "types",
