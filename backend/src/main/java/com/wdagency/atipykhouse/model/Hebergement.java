@@ -1,5 +1,6 @@
 package com.wdagency.atipykhouse.model;
 
+import java.sql.Blob;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -53,10 +54,12 @@ public class Hebergement {
     @Column(name = "latitude")
     private Double latitude;
     
+	@Column(name="photos")
+	private List<Blob> photos; 
+    
 	@ManyToOne(targetEntity = Type.class, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "typeName", nullable=false)
 	private Type type;
-
 	
 	@OneToMany(mappedBy="hebergement", cascade = CascadeType.ALL)
 	private List<Commentaire> comments;
